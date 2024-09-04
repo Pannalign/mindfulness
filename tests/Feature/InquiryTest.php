@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Experience;
+use App\Models\Inquiry;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -16,14 +16,14 @@ class ExperienceTest extends TestCase
      *
      * @return void
      */
-    public function test_can_create_experience_associated_with_user()
+    public function test_can_create_inquiry_associated_with_user()
     {
         $user = User::factory()->create();
 
         // Create an experience associated with the user
-        $experience = Experience::factory()->recycle($user)->create();
+        $experience = Inquiry::factory()->recycle($user)->create();
 
-        $this->assertInstanceOf(Experience::class, $experience);
+        $this->assertInstanceOf(Inquiry::class, $experience);
         $this->assertEquals($user->id, $experience->owner_id);
     }
 }

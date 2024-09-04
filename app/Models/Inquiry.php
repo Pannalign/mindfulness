@@ -3,18 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+class Inquiry extends Node
 {
     use HasFactory;
 
     protected $fillable = [
         'owner_id',
-        'title',
-        'description',
-        'tags',
-        'categories',
+        'type',
     ];
 
     public function owner()
@@ -22,8 +18,8 @@ class Experience extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function inquiries()
+    public function reflections()
     {
-        return $this->hasMany(Inquiry::class);
+        return $this->hasMany(Reflection::class);
     }
 }

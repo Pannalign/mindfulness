@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Experience;
+use App\Models\Inquiry;
 use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Experience>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Inquiry>
  */
-class ExperienceFactory extends Factory
+class InquiryFactory extends Factory
 {
     /**
      * The name of the factory's
@@ -17,20 +17,22 @@ class ExperienceFactory extends Factory
      *
      * @var string
      */
-    protected $model = Experience::class;
+    protected $model = Inquiry::class;
 
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
+    // TODO: Add NodeFactory/integrate here.
     public function definition()
     {
         return
         [
             'owner_id' => User::factory(),
+            'type' => 'open',
             'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
+            'content' => $this->faker->paragraph(),
         ];
     }
 }
