@@ -11,10 +11,15 @@ class InquiryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $inquiries = Inquiry::all();
-        return Inertia::render('Inquiry/Index', compact('inquiries'));
+        // FIXME: This likely isn't the correct way to do this.
+        if ($request->route()->getPrefix() == "/dev-tools") {
+            $inquiries = Inquiry::all();
+            return Inertia::render('Inquiry/Index', compact('inquiries'));
+        }
+
+        abort(404, 'The page you are looking for could not be found.');
     }
 
     /**
@@ -43,9 +48,14 @@ class InquiryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Inquiry $inquiry)
+    public function show(Request $request, Inquiry $inquiry)
     {
-        return Inertia::render('Inquiry/Show', compact('inquiry'));
+        // FIXME: This likely isn't the correct way to do this.
+        if ($request->route()->getPrefix() == "/dev-tools") {
+            return Inertia::render('Inquiry/Show', compact('inquiry'));
+        }
+
+        abort(404, 'The page you are looking for could not be found.');
     }
 
     /**
