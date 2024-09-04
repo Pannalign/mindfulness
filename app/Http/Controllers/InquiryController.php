@@ -13,13 +13,14 @@ class InquiryController extends Controller
      */
     public function index(Request $request)
     {
+        $inquiries = Inquiry::all();
+
         // FIXME: This likely isn't the correct way to do this.
         if ($request->route()->getPrefix() == "/dev-tools") {
-            $inquiries = Inquiry::all();
             return Inertia::render('Inquiry/Index', compact('inquiries'));
         }
 
-        abort(404, 'The page you are looking for could not be found.');
+        return response()->json($inquiries);
     }
 
     /**
@@ -55,7 +56,7 @@ class InquiryController extends Controller
             return Inertia::render('Inquiry/Show', compact('inquiry'));
         }
 
-        abort(404, 'The page you are looking for could not be found.');
+        return response()->json($inquiry);
     }
 
     /**
