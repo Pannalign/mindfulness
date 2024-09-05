@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-#treeWrapper {
-  width: '100%';
+.treeWrapper {
   height: '100vh';
+  flex: 1;
+  max-width: 70%;
+}
+
+.treeWrapper.sm {
+  max-width: 30%;
+}
+
+.row {
+  display: flex;
+  flex-wrap:wrap;
 }
 
 .node {

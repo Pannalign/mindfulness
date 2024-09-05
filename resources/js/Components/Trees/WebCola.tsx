@@ -5,22 +5,24 @@ import * as d3 from 'd3';
 // Based on: https://github.com/tgdwyer/WebCola/blob/master/website/examples/smallnonoverlappinggraph.html
 const Tree = ({ nodes, links }) => {
   const svgRef = useRef(null);
-  const width = 800;
-  const height = 600;
+  const width = "100%";
+  const height = "100%";
   const color = d3.scaleOrdinal(d3.schemeCategory10);
   const colad3 = cola.d3adaptor(d3)
     .linkDistance(120)
-    .avoidOverlaps(true)
-    .size([width, height]);
+    .avoidOverlaps(true);
 
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); // Select SVG element
+    const containerWidth = svgRef.current.clientWidth;
+    const containerHeight = svgRef.current.clientHeight;
 
     // Render nodes and links using colad3
     colad3
       .nodes(nodes)
       .links(links)
+      .size([containerWidth, containerHeight])
       .start();
 
     var link = svg.selectAll(".link")
@@ -66,7 +68,7 @@ const Tree = ({ nodes, links }) => {
   }, [nodes, links]);
 
   return (
-    <svg ref={svgRef} width={width} height={height}></svg>
+    <svg ref={svgRef} height={height} width={width}></svg>
   )
 }
 

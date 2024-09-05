@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
-import CenteredTree from '../Components/Trees/DAG';
+import DAG from '../Components/Trees/DAG';
 import Tree from '../Components/Trees/WebCola';
 
 // This is a simplified example of an org chart with a depth of 2.
@@ -13,7 +13,6 @@ const sampleInquiryChart = [{
   },
   children: [
     {
-      id: '2',
       name: 'Inquiry',
       attributes: {
         content: "The sky itself, or our perception of it?",
@@ -28,34 +27,12 @@ const sampleInquiryChart = [{
       ],
     },
     {
-      id: '2',
-      name: 'Inquiry',
+      name: 'Response',
       attributes: {
-        content: "The sky itself, or our perception of it?",
-      },
-      children: [
-        {
-          name: 'Response',
-          attributes: {
-            content: 'The sky itself.',
-          },
-        },
-      ],
+        content: 'The sky is clear.',
+      }
     },
   ]
-},
-{
-    name: 'Synthesis',
-    parent: ['1', '2'],
-    children: [
-        {
-            name: 'Response',
-            attributes: {
-                content: 'The sky is clear.'
-            },
-        },
-
-    ]
 }]
 
 // const nodes = [
@@ -96,8 +73,13 @@ export default function Dashboard({ auth }: PageProps) {
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
                     </div>
-                    <div id="treeWrapper">
-                        <Tree nodes={example.nodes} links={example.links} />
+                    <div className="row">
+                      <div className="treeWrapper">
+                          <DAG data={sampleInquiryChart} />
+                      </div>
+                      <div className="treeWrapper sm">
+                          <Tree nodes={example.nodes} links={example.links} />
+                      </div>
                     </div>
                 </div>
             </div>

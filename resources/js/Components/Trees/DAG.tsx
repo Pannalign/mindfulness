@@ -11,9 +11,9 @@ const colorScale = scaleOrdinal()
   .domain(['Inquiry', 'Reflection', 'Response'])
   .range(['yellow', 'blue', 'green']); // Adjust colors as needed
 
-interface CenteredTreeProps {}
+interface DAGProps {}
 
-export default class CenteredTree extends React.Component<CenteredTreeProps> {
+export default class DAG extends React.Component<DAGProps> {
   state = {}
 
   // TODO: Kenji - this breaks clicking on nodes to expand/collapse, and also renders improperly.
@@ -33,7 +33,7 @@ export default class CenteredTree extends React.Component<CenteredTreeProps> {
     const dimensions = this.treeContainer.getBoundingClientRect();
     this.setState({
       translate: {
-        x: dimensions.width / 2,
+        x: dimensions.width / 3,
         y: dimensions.height / 4 // TODO: Kenji, why does this need to be /4 for it to be centered?
       }
     });
