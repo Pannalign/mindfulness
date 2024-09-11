@@ -47,6 +47,8 @@ export default class CenteredTree extends React.Component<CenteredTreeProps> {
           translate={this.state.translate}
           //renderCustomNodeElement={this.renderNode}
           orientation={'vertical'}
+          separation={{ nonSiblings: 3, siblings: 3 }}
+          nodeSize={{ x: 160, y: 160 }}
         />
       </div>
     );
