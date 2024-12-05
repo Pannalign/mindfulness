@@ -1,6 +1,6 @@
 package main
 
-import "kusalatech/satipattana/internal/stages/veneration"
+import "kusalatech/satipattana/internal/actions/veneration"
 
 func main() {
 	veneration.Explain()
