@@ -23,10 +23,17 @@ var (
 			"raise",
 		},
 	}
-	objects []string = []string{
-		"enlightened beings",
-		"natural truths",
-		"community",
+	// TODO: is there a way to make an ordered map?
+	objects []map[string]string = []map[string]string{
+		map[string]string{
+			"Buddha": "enlightened beings",
+		},
+		map[string]string{
+			"Dhamma": "natural truths",
+		},
+		map[string]string{
+			"Sangha": "community",
+		},
 	}
 )
 
